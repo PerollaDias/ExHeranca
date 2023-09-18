@@ -8,14 +8,14 @@ namespace exemploheranca1.Exercicio3
 {
     internal class ContaEmpresa:Conta
     {
-        public ContaEmpresa(double taxaanuidade, double limiteemprestimo, double totalemprestimo, int numeroconta, string agencia, string titularconta, double saldoconta) 
+        public ContaEmpresa(double taxaanuidade, double limiteemprestimo, double totalemprestimo, int numeroconta, int agencia, string titularconta, double saldoconta) 
             : base(numeroconta, agencia, titularconta, saldoconta)
         {
         }
 
-        public double taxaanuidade { get; set; }
-        public double limiteemprestimo { get; set; }
-        public double totalemprestimo { get; set; }
+        public double Taxaanuidade { get; set; }
+        public double Limiteemprestimo { get; set; }
+        public double Totalemprestimo { get; set; }
 
        
 
@@ -28,14 +28,14 @@ namespace exemploheranca1.Exercicio3
             }
             else
             {
-                if(valor + 5 <= saldoconta)
+                if(valor + 5 <= Saldoconta)
                 {
-                    saldoconta -= (valor + 5);
-                    Console.WriteLine($" Saque realizado com taxa de R$5,00");
+                    Saldoconta -= (valor + 5);
+                    Console.WriteLine($" Saque de {valor} reais realizado com taxa de R$5,00");
                 }
                 else
                 {
-                    Console.WriteLine("saldo insuficiente.");
+                    Console.WriteLine("Saldo insuficiente.");
                 }
             }
         }
@@ -44,10 +44,10 @@ namespace exemploheranca1.Exercicio3
         {
             
             
-            if (valor <= limiteemprestimo)
+            if (valor <= Limiteemprestimo - Totalemprestimo)
             {
-                saldoconta += valor;
-                totalemprestimo += valor;
+                Saldoconta += valor;
+                Totalemprestimo += valor;
                 Console.WriteLine($" Empréstimo no valor: {valor} realizado com sucesso!!! ");
             }
             else

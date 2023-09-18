@@ -7,17 +7,18 @@ public class Program
     {
         Conta conta = new Conta();
         {
-            conta.numeroconta = 100;
-            conta.agencia = 01;
-            conta.titularconta = "Pérolla";
-            conta.saldoconta = 1000;
+            conta.Numeroconta = 100;
+            conta.Agencia = 01;
+            conta.Titularconta = "Pérolla";
+            conta.Saldoconta = 1000;
         }
 
         Console.WriteLine("Conta Empresa");
-        Console.WriteLine($"Saldo atual: {conta.saldoconta}");
+        Console.WriteLine($"Saldo atual: {conta.Saldoconta}\n");
         Console.WriteLine("Menu:\n" +
             "Opção 1: sacar. \n" +
-            "Opção 2: realizar empréstimo. \n");
+            "Opção 2: Depositar. \n" +
+            "Opção 3: Realizar empréstino. \n");
         Console.WriteLine(" Escolha uma opção do menu.");
         int opcaoescolhida = ((Convert.ToInt32(Console.ReadLine())));
 
@@ -28,7 +29,11 @@ public class Program
        
         if(opcaoescolhida == 2)
         {
-            conta.RealizEmprestimo(Convert.ToInt32(Console.ReadLine()));
+            conta.Depositar(Convert.ToInt32(Console.ReadLine()));
+        }
+        if (opcaoescolhida == 3)
+        {
+            ContaEmpresa.RealizEmprestimo(Convert.ToInt32(Console.ReadLine()));
         }
         
 

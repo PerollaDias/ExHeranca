@@ -8,11 +8,12 @@ namespace exemploheranca1.Exercicio3
 {
     internal class ContaEstudante:Conta
     {
-        public double limiteChequeEspecial { get; set; }
+        public double LimiteChequeEspecial { get; set; }
         public string CPF { get; set; }
-        public string nomeInst { get; set; }
+        public string NomeInst { get; set; }
 
-        public ContaEstudante(double limiteChequeEspecial, string CPF, string nomeInst, int numeroconta, string Agencia, string titularconta, double saldoconta)
+        public ContaEstudante(double limiteChequeEspecial, string CPF, string nomeInst, int numeroconta, int Agencia, 
+            string titularconta, double saldoconta)
            : base(numeroconta, Agencia, titularconta, saldoconta)
         {
         }
@@ -21,22 +22,16 @@ namespace exemploheranca1.Exercicio3
 
         public override void Saque(double Valor)
         {
-            if (Valor <= limiteChequeEspecial)
+            if (Valor <= Saldoconta + LimiteChequeEspecial)
             {
-                base.Saque(Valor);
+                Saldoconta -= Valor;
+                Console.WriteLine($" Saque realizado no valor de: {Valor} reais! ");
 
             }
             else
             {
-                if (Valor + 5 <= Saldoconta)
-                {
-                    Saldoconta -= (Valor + 5);
-                    Console.WriteLine($" Saque realizado com taxa de R$5,00");
-                }
-                else
-                {
-                    Console.WriteLine("saldo insuficiente.");
-                }
+                Console.WriteLine("saldo insuficiente.");
+                
             }
         }
     }

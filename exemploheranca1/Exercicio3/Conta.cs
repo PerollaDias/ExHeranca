@@ -8,30 +8,29 @@ namespace exemploheranca1.Exercicio3
 {
     internal class Conta
     {
-        private string agencia1;
 
-        public int numeroconta { get; set; }
-        public int agencia { get; set; }
-        public string titularconta { get; set; }
-        public double saldoconta { get; set; }
+        public int Numeroconta { get; set; }
+        public int Agencia { get; set; }
+        public string Titularconta { get; set; }
+        public double Saldoconta { get; set; }
 
         public Conta()
         {
         }
 
-        public Conta(int numeroconta, string agencia1, string titularconta, double saldoconta)
+        public Conta(int numeroconta, int agencia, string titularconta, double saldoconta)
         {
-            this.numeroconta = numeroconta;
-            this.agencia1 = agencia1;
-            this.titularconta = titularconta;
-            this.saldoconta = saldoconta;
+            this.Numeroconta = numeroconta;
+            this.Agencia = agencia;
+            this.Titularconta = titularconta;
+            this.Saldoconta = saldoconta;
         }
 
-        public virtual void Saque(double valor)
+        public virtual void Saque(double Valor)
         {
-            if(valor <= saldoconta)
+            if(Valor <= Saldoconta)
             {
-                saldoconta -= valor;
+                Saldoconta -= Valor;
                 Console.WriteLine(" Saque realizado com sucesso!!! ");
             }
             else
@@ -40,10 +39,11 @@ namespace exemploheranca1.Exercicio3
             }
             
         }
-        public virtual void RealizEmprestimo(double valor)
+        public virtual void Depositar(double Valor)
         {
-            saldoconta += valor;
-            Console.WriteLine(" Depósito realizado com sucesso!!! ");
+
+            Saldoconta += Valor;
+            Console.WriteLine(" Depósito na sua conta realizado com sucesso!!! ");
         }
     }
 }
