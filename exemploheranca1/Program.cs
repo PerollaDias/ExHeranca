@@ -5,36 +5,132 @@ public class Program
 {
     static void Main(string[] args)
     {
-        Conta conta = new Conta();
-        {
-            conta.Numeroconta = 100;
-            conta.Agencia = 01;
-            conta.Titularconta = "Pérolla";
-            conta.Saldoconta = 1000;
-        }
-
-        Console.WriteLine("Conta Empresa");
-        Console.WriteLine($"Saldo atual: {conta.Saldoconta}\n");
-        Console.WriteLine("Menu:\n" +
-            "Opção 1: sacar. \n" +
-            "Opção 2: Depositar. \n" +
-            "Opção 3: Realizar empréstino. \n");
-        Console.WriteLine(" Escolha uma opção do menu.");
-        int opcaoescolhida = ((Convert.ToInt32(Console.ReadLine())));
-
-        if (opcaoescolhida == 1)
-        {
-           conta.Saque(Convert.ToInt32(Console.ReadLine()));
-        }
+        int Numeroconta = 01;
+        int Agencia = 05;
        
-        if(opcaoescolhida == 2)
+        while (true)
         {
-            conta.Depositar(Convert.ToInt32(Console.ReadLine()));
+            Console.WriteLine("Digite \n" +
+            "1 para conta comum \n" +
+            "2 para conta estudante \n" +
+            "3 para conta empresarial\n" +
+            "4 para sair \n");
+            int opcao = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Digite o titular da conta: \n");
+            string Titularconta = Console.ReadLine();
+
+
+            if (opcao == 1)
+            {
+                Conta c = new Conta(Numeroconta, Agencia, Titularconta, 0);
+                Numeroconta += 1;
+                while (true)
+                {
+                    Console.WriteLine("1 para depositar, 2 para sacar e 3 para sair \n");
+                    opcao = Convert.ToInt32(Console.ReadLine());
+                    if (opcao == 1)
+                    {
+                        Console.WriteLine("Digite o valor para depositar: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        c.Depositar(valor);
+                        Console.WriteLine($"Novo saldo: {c.Saldoconta} \n");
+                    }
+                    else if (opcao == 2)
+                    {
+                        Console.WriteLine("Digite o valor para sacar: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        c.Saque(valor);
+                        Console.WriteLine($"Novo saldo: {c.Saldoconta} \n");
+                    }
+                    else if (opcao == 3)
+                    {
+                        Console.Clear();
+                        break;
+                    }
+                }
+            }
+            else if (opcao == 2)
+            {
+                Console.WriteLine("Digite o CPF do estudante: ");
+                string CPF = Console.ReadLine();
+
+                Console.WriteLine("Informe a Instituição: ");
+                string NomeInst = Console.ReadLine();
+
+                ContaEstudante contaEstudante = new ContaEstudante(100, CPF, NomeInst, Numeroconta, Agencia, Titularconta, 0);
+                Numeroconta += 1;
+                while (true)
+                {
+                    Console.WriteLine("1 para depositar, 2 para sacar e 3 para sair\n");
+                    opcao = Convert.ToInt32(Console.ReadLine());
+
+                    if (opcao == 1)
+                    {
+                        Console.WriteLine("Digite o valor para depositar: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        contaEstudante.Depositar(valor);
+                        Console.WriteLine($"Novo saldo: {contaEstudante.Saldoconta}\n");
+                    }
+                    else if (opcao == 2)
+                    {
+                        Console.WriteLine("Digite o valor para sacar: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        contaEstudante.Saque(valor);
+                        Console.WriteLine($"Novo saldo: {contaEstudante.Saldoconta}\n");
+                    }
+                    else if (opcao == 3)
+                    {
+                        Console.Clear();
+                        break;
+                    }
+                }
+            }
+            else if (opcao == 3)
+            {
+                ContaEmpresa contaEmpresa = new ContaEmpresa(10, 1000, Numeroconta, Agencia, Titularconta, 0);
+                Numeroconta += 1;
+                while (true)
+                {
+                    Console.WriteLine("1 para depositar, 2 para sacar, 3 para fazer empréstimo e 4 para sair. \n");
+                    opcao = Convert.ToInt32(Console.ReadLine());
+
+                  if(opcao == 1)
+                    {
+                        Console.WriteLine("Digite o valor para depositar: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        contaEmpresa.Depositar(valor);
+                        Console.WriteLine($"Novo saldo: {contaEmpresa.Saldoconta}\n");
+                    }
+                    else if (opcao == 2)
+                    {
+                        Console.WriteLine("Digite o valor para sacar: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        contaEmpresa.Saque(valor);
+                        Console.WriteLine($"Novo saldo: {contaEmpresa.Saldoconta}\n");
+                    }
+                    else if (opcao == 3)
+                    {
+                        Console.WriteLine("Digite o valor para empréstimo: ");
+                        double valor = Convert.ToDouble(Console.ReadLine());
+                        contaEmpresa.RealizEmprestimo(valor);
+                        Console.WriteLine($"Novo saldo: {contaEmpresa.Saldoconta}\n");
+                    }
+                    else if (opcao == 4)
+                    {
+                        Console.Clear();
+                        break;
+                    }
+                }
+            }
+            else if (opcao == 4)
+            {
+                break;
+            }
         }
-        if (opcaoescolhida == 3)
-        {
-            ContaEmpresa.RealizEmprestimo(Convert.ToInt32(Console.ReadLine()));
-        }
+
+        
+
+        
         
 
 

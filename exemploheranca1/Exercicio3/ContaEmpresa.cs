@@ -8,9 +8,12 @@ namespace exemploheranca1.Exercicio3
 {
     internal class ContaEmpresa:Conta
     {
-        public ContaEmpresa(double taxaanuidade, double limiteemprestimo, double totalemprestimo, int numeroconta, int agencia, string titularconta, double saldoconta) 
+        public ContaEmpresa(double taxaanuidade,double Limiteemprestimo, int numeroconta, int agencia, string titularconta, double saldoconta) 
             : base(numeroconta, agencia, titularconta, saldoconta)
         {
+            this.Taxaanuidade = taxaanuidade;
+            this.Limiteemprestimo = Limiteemprestimo;
+            Totalemprestimo = 0;
         }
 
         public double Taxaanuidade { get; set; }
